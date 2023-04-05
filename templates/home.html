@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Tourism on the <a href="{% url 'mainland' %}">Mainland</a></h1>
+
+<h1>Tourism on the <a href="{% url 'island' %}">Island</a></h1>
+
+{% if request.user.is_authenticated %}
+<p>Found a new and exciting location? Add it <a href="{% url 'new_place' %}">here</a>.</p>
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if request.method == "POST" %}
+<p>New Place created</p>
+
+{% else %}
+<h1>Add a new Tourist Location</h1>
+<form action="." method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+
+
+
+{% endif %}
+
+{% endblock %}

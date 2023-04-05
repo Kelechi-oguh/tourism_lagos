@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if object_list %}
+{% for object in object_list %}
+
+<h2><a href="{{ object.get_absolute_url }}">{{ object.name }}</a></h2>
+
+{% endfor %}
+
+{% else %}
+<p>No entry yet</p>
+{% endif %}
+
+{% endblock content %}
