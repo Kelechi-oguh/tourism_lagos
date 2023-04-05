@@ -1,18 +1,83 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Tourism Lagos </title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% bootstrap_messages %}
 </head>
-<body>
-    
+<body style="min-height: 100vh; margin: 0; display: flex; flex-direction: column;">
+    <!-- Header section starts here -->
+        <div class="container" >
+            <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+                <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+                    <h1>Tourism Lagos</h1>
+                </a>
+        
+                <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="{% url 'home' %}" class="nav-link px-2 link-secondary">Home</a></li>
+                    <li><a href="#" class="nav-link px-2 link-dark">Features</a></li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Category</a>
+                    <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-macos mx-0 border-0 shadow" style="width: 220px;">
+                        <li><a class="dropdown-item" href="{% url 'mainland' %}">Mainland</a></li>
+                        <li><a class="dropdown-item" href="{% url 'island' %}">Island</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                    </ul>
+                    </li>
+                    <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
+                    <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
+                </ul>
+        
+
+                <div class="col-md-3 text-end">
+                    {% if request.user.is_authenticated %}
+                    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                        <li style="margin-right: 20px;"><h3>Hi, {{ user.username }}</h3></li>
+                        <li><a class="nav-link px-2 link-secondary" href="{% url 'logout' %}">Log Out</a></li>
+                    </ul>
+                    
+                    {% else %}
+                    <a href="{% url 'login' %}"><button type="button" class="btn btn-outline-primary me-2">Login</button></a>
+                    
+                    <a href="{% url 'signup' %}"><button type="button" class="btn btn-primary">Sign-up</button></a>
+                    
+                    {% endif %}
+                </div>
+            </header>
+        </div>
+    <main style="flex-grow: 1;">
+        <div class="container">
+            {% block content %} 
+            {% endblock %}
+        </div>
+    </main>
+
+    <!-- Foooter starts here -->
+    <div class="container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top" style="margin-top: auto;">
+          <p class="col-md-4 mb-0 text-muted">&copy; 2023 Tourism Lagos</p>
+      
+          <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+          </a>
+      
+          <ul class="nav col-md-4 justify-content-end">
+            <li class="nav-item">
+                <a href="{% url 'home' %}" class="nav-link px-2 text-muted">Home</a>
+            </li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+          </ul>
+        </footer>
+    </div>
     
 </body>
 </html>
+

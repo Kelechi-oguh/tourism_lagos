@@ -37,7 +37,7 @@ class LogInView(View):
             if user:
                 login(request, user)
                 return redirect('home')
-        return render(request, 'login.html', {"form": LoginForm(), "message": "Account does not exist."})
+        return render(request, 'login.html', {"form": LoginForm(), "message": "Invalid email or password."})
 
 
 
