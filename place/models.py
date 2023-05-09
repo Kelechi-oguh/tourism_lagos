@@ -11,7 +11,7 @@ class Place(models.Model):
 
     name = models.CharField(max_length=100, blank=False)
     slug = models.SlugField(null=True, unique=True)
-    address = models.CharField(max_length=200, blank=False)
+    address = models.CharField(max_length=200, blank=True)
     location = models.CharField(max_length=50, choices=locations_in_lagos, default='Mainland')
 
 
@@ -24,9 +24,11 @@ class Place(models.Model):
         name_list = self.name.strip().split()
         name_part = "+".join(name_list)
         address_list = self.address.replace(",", " ").replace(".", " ").strip().split()
-        address_part = address_list[-1].lower()
-        if address_part == 'lagos':
-            address_part = address_list[-2]
+        address_part = "+".join(address_list)
+
+        # address_part = address_list[-1].lower()
+        # if address_part == 'lagos':
+        #     address_part = address_list[-2]
 
         final_map_str = f"{name_part}+{address_part}"
         return final_map_str
@@ -35,6 +37,7 @@ class Place(models.Model):
     def save(self, *args, **kwargs):
         if self.slug is None:
             self.slug = slugify(self.name)
+        
         return super().save(*args, **kwargs)
 
 

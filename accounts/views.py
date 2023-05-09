@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.views import View
 from django.contrib.auth import login, authenticate, logout
+from django.contrib import messages
 
 from .forms import SignUpForm, LoginForm
 
@@ -16,6 +17,7 @@ class SignUpView(View):
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "Sign Up Succesful, Please Login!")
             return redirect('login')
         else:
             context = {"form": SignUpForm(), "error": "Form is not valid"}
@@ -37,7 +39,8 @@ class LogInView(View):
             if user:
                 login(request, user)
                 return redirect('home')
-        return render(request, 'login.html', {"form": LoginForm(), "message": "Invalid email or password."})
+        messages.warning(request, "Invalid email or password.")
+        return render(request, 'login.html', {"form": LoginForm()})
 
 
 
