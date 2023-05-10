@@ -20,7 +20,8 @@ class SignUpView(View):
             messages.success(request, "Sign Up Succesful, Please Login!")
             return redirect('login')
         else:
-            context = {"form": SignUpForm(), "error": "Form is not valid"}
+            messages.warning(request, form.errors)
+            context = {"form": SignUpForm()}
             return render(request, 'signup.html', context)
 
 
