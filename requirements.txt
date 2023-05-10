@@ -1,2 +1,2 @@
 django
-djangp-bootstrap-v5
+django-bootstrap-v5
