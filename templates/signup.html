@@ -1,14 +1,12 @@
 {% extends "base.html" %}
 
 {% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
 
 
 {% block content %}
-
-{% if error %}
-<p>{{ error }}</p>
-{% endif %}
-
 
 {% if request.user.is_authenticated %}
 <p>You are already Logged In.</p>
@@ -24,10 +22,4 @@
 <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
 {% endif %}
 
-
 {% endblock %}
-
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-    A simple success alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>

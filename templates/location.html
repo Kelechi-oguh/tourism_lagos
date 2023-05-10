@@ -2,15 +2,43 @@
 
 {% block content %}
 
+
 {% if object_list %}
-{% for object in object_list %}
 
-<h2><a href="{{ object.get_absolute_url }}">{{ object.name }}</a></h2>
-
-{% endfor %}
+<div class="location">
+    {% for object in object_list %}
+    <h3>
+        <i class="fa-sharp fa-solid fa-location-dot"></i>
+        <a href="{{ object.get_absolute_url }}">{{ object.name }}</a>
+    </h3>
+    {% endfor %}
+</div>
 
 {% else %}
-<p>No entry yet</p>
+<h2>No entry yet</h2>
 {% endif %}
+
+
+
+<div style="margin: auto;">
+    {% include "partials/new_place_prompt.html" %}
+</div>
+
+
+<style>
+    .location{
+        margin-top: 30px;
+        margin-bottom: 60px;
+    }
+    .location h3{
+        margin: 20px 0px;
+    }
+    .location h3 i{
+        margin-right: 10px;
+    }
+    .location a{
+        text-decoration: none;
+    }
+</style>
 
 {% endblock content %}

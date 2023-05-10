@@ -1,41 +1,72 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 
-<main>
-    <div style="margin: 30px 30px;">
-        <a href="{% url 'mainland' %}">
-            <svg class="bd-placeholder-img bd-placeholder-img-lg img-fluid" width="100%" height="350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Responsive image" preserveAspectRatio="xMidYMid slice" focusable="false" >
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#868e96"></rect>
-                <text x="35%" y="50%" fill="#dee2e6" dy=".3em" style="font-size: xxx-large;">Mainland Tourism</text>
-            </svg>
-        </a>
-    </div>
-
-
-    <div style="margin: 30px 30px;">
-        <a href="{% url 'island' %}">
-            <svg class="bd-placeholder-img bd-placeholder-img-lg img-fluid" width="100%" height="350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Responsive image" preserveAspectRatio="xMidYMid slice" focusable="false" >
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#868e96"></rect>
-                <text x="35%" y="50%" fill="#dee2e6" dy=".3em" style="font-size: xxx-large;">Island Tourism</text>
-            </svg>
-        </a>
-    </div>
-    
-</main>
-
-{% comment %} <main style="margin-top: 50px; margin-bottom: 20px;">
-    <h2>Tourism on the <a href="{% url 'mainland' %}">Mainland</a></h2>
-    <p></p>
-    <h2>Tourism on the <a href="{% url 'island' %}">Island</a></h2>
-</main> {% endcomment %}
-
-
-{% if request.user.is_authenticated %}
-<p>Found a new and exciting location? Add it <a href="{% url 'new_place' %}">here</a>.</p>
+{% if not request.user.is_authenticated %}
+<div class="welcome">
+    <h3>Hey there,</h3>
+    <p>Check out some exciting tourism locations in lagos.</p>
+</div>
 {% endif %}
 
+<div class="home">
+    <a href="{% url 'mainland' %}">
+        <img src="{% static 'img/city.jpg' %}" class="img-fluid" alt="Mainland">
+        <div class="text">
+            <h1>Mainland</h1>
+        </div>
+    </a>
+</div>
+<div class="home">
+    <a href="{% url 'island' %}">
+        <img src="{% static 'img/beach.jpg' %}" class="img-fluid" alt="Island">
+        <div class="text">
+            <h1>Island</h1>
+        </div>
+    </a>
+</div>
 
+<style>
+    .welcome{
+        margin: 30px 0px;
+    }
+    .welcome h3{
+        font-size: xx-large;
+        font-family: cursive;
+    }
+    .welcome p{
+        font-size: x-large;
+        margin-top: 20px;
+    }
+    .home{
+        position: relative; 
+        text-align: center; 
+        width: 100%;  
+        object-fit: fill; 
+        margin: 40px 0px;
+    }
+    .home img{
+        width: 80%; 
+        height: 500px; 
+        overflow: hidden; 
+    }
+    .home a{
+        opacity: 0.8;
+    }
+    .home a:hover{
+        opacity: 1;
+    }
+    .text{
+        position: absolute;
+        top: 50%; 
+        left: 50%;
+        transform: translate(-50%, -50%); 
+        color: aliceblue;
+    }
+</style>
+
+<div style="margin: auto; margin-top: 50px;">
+    {% include "partials/new_place_prompt.html" %}
+</div>
 {% endblock %}
