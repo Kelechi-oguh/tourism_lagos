@@ -1,0 +1,1 @@
+web: gunicorn tourism_lagos.wsgi
