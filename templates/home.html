@@ -6,13 +6,13 @@
 {% if not request.user.is_authenticated %}
 <div class="welcome">
     <h3>Hey there,</h3>
-    <p>Check out some exciting tourism locations in lagos.</p>
+    <p>Check out some exciting tourism locations in Lagos.</p>
 </div>
 {% endif %}
 
 <div class="home">
     <a href="{% url 'mainland' %}">
-        <img src="{% static 'img/city.jpg' %}" class="img-fluid" alt="Mainland">
+        <img src="{% static 'images/city.jpg' %}" class="img-fluid" alt="Mainland">
         <div class="text">
             <h1>Mainland</h1>
         </div>
@@ -20,7 +20,7 @@
 </div>
 <div class="home">
     <a href="{% url 'island' %}">
-        <img src="{% static 'img/beach.jpg' %}" class="img-fluid" alt="Island">
+        <img src="{% static 'images/beach.jpg' %}" class="img-fluid" alt="Island">
         <div class="text">
             <h1>Island</h1>
         </div>
