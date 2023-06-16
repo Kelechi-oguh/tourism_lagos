@@ -12,9 +12,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 
-# load_dotenv()
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,17 +24,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = os.environ.get('SECRET_KEY')
-SECRET_KEY = 'django-insecure-lyf0=$c(ntc171h_om#qk_4nzqb26yx4!=$fkd=u&=q439hg^+'
+SECRET_KEY = os.environ.get('SECRET_KEY')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
 # FORM SUBMISSION
 # Comment out the following line and place your railway URL, and your production URL in the array.
-CSRF_TRUSTED_ORIGINS = ['https://web-production-acc4.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://tourismlagos-production.up.railway.app']
 
 # Application definition
 
