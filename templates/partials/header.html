@@ -2,7 +2,7 @@
 
 <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
     <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-        <h1 style="font-family: cursive; color: rgb(19, 125, 231);">Tourism Lagos</h1>
+        <h1 style="font-family: cursive; color: #0077EA;">Tourism Lagos</h1>
     </a>
 
     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
@@ -10,20 +10,19 @@
         <!-- <li><a href="#" class="nav-link px-2 link-dark">Features</a></li> -->
 
         <li class="nav-item dropdown">
-        <a style="color:rgb(19, 125, 231);" class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Category</a>
-        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-macos mx-0 border-0 shadow" style="width: 220px;">
-            <li><a class="dropdown-item" href="{% url 'mainland' %}">Mainland</a></li>
-            <li><a class="dropdown-item" href="{% url 'island' %}">Island</a></li>
+            <a style="color:#0077EA; font-weight:500;" class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Location</a>
+            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-macos mx-0 border-0 shadow" style="width: 220px;">
+                <li><a class="dropdown-item" href="{% url 'mainland' %}">Mainland</a></li>
+                <li><a class="dropdown-item" href="{% url 'island' %}">Island</a></li>
 
-            {% if request.user.is_authenticated %}
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{% url 'new_place' %}">Add a new location</a></li>
-            {% endif %}
-            
-        </ul>
+                {% if request.user.is_authenticated %}
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="{% url 'new_place' %}">Add a new location</a></li>
+                {% endif %}
+            </ul>
         </li>
+        <li><a href="{% url 'bucket-list' %}" class="nav-link px-2 link-dark">My Bucket List</a></li>
         <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
     </ul>
 
 
@@ -31,13 +30,13 @@
         {% if request.user.is_authenticated %}
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li style="margin-right: 20px;"><h3 style="font-family: cursive;">Hi, {{ user.username }}</h3></li>
-            <li><a style="color:rgb(19, 125, 231);" class="nav-link px-2 link-secondary" href="{% url 'logout' %}">Log Out</a></li>
+            <li><a style="color:#0077EA;" class="nav-link px-2 link-secondary" href="{% url 'logout' %}">Log Out</a></li>
         </ul>
         
         {% else %}
-        <a href="{% url 'login' %}"><button type="button" class="btn btn-outline-primary me-2">Login</button></a>
+        <a href="{% url 'login' %}"><button type="button" class="btn btn-outline-primary me-2" >Login</button></a>
         
-        <a href="{% url 'signup' %}"><button type="button" class="btn btn-primary">SignUp</button></a>
+        <a href="{% url 'signup' %}"><button type="button" class="btn btn-primary" style="background-color:#0077EA;">SignUp</button></a>
         
         {% endif %}
     </div>

@@ -7,10 +7,21 @@
 
 <div class="location">
     {% for object in object_list %}
-    <h3>
-        <i class="fa-sharp fa-solid fa-location-dot"></i>
-        <a href="{{ object.get_absolute_url }}">{{ object.name }}</a>
-    </h3>
+    <ul>
+        <li style="list-style: none;">
+            <h3>
+                <i class="fa-sharp fa-solid fa-location-dot"></i>
+                <a href="{{ object.get_absolute_url }}">{{ object.name }}</a>
+            </h3>
+            
+            <div class="add-to-bucket-list">
+                <form action="/bucket-list/{{ object.slug }}/" method="post">
+                    {% csrf_token %}
+                    <button type="submit" title="Add to Bucket List">+</button>
+                </form>
+            </div>  
+        </li>
+    </ul>
     {% endfor %}
 </div>
 
@@ -30,14 +41,30 @@
         margin-top: 30px;
         margin-bottom: 60px;
     }
-    .location h3{
+    .location li{
         margin: 20px 0px;
+        display:flex
     }
-    .location h3 i{
+    .location li i{
         margin-right: 10px;
     }
     .location a{
         text-decoration: none;
+        color: #1e90ff;
+        margin-left: 20px;
+    }
+    .add-to-bucket-list{
+        margin-left: 30px;
+    }
+    .add-to-bucket-list button{
+        color: white;
+        font-weight: bold;
+        border: 2px solid transparent;
+    }
+    .add-to-bucket-list button:hover{
+        transition: .4s;
+        background-color: #0077EA;
+        color: white;
     }
 </style>
 

@@ -1,6 +1,8 @@
+from django.conf import settings
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
+
 
 # Create your models here.
 class Place(models.Model):
@@ -26,10 +28,6 @@ class Place(models.Model):
         address_list = self.address.replace(",", " ").replace(".", " ").strip().split()
         address_part = "+".join(address_list)
 
-        # address_part = address_list[-1].lower()
-        # if address_part == 'lagos':
-        #     address_part = address_list[-2]
-
         final_map_str = f"{name_part}+{address_part}"
         return final_map_str
 
@@ -37,9 +35,17 @@ class Place(models.Model):
     def save(self, *args, **kwargs):
         if self.slug is None:
             self.slug = slugify(self.name)
-        
         return super().save(*args, **kwargs)
 
 
     def __str__(self):
         return self.name
+    
+
+class BucketList(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, primary_key=True)
+    places = models.ManyToManyField(Place)
+
+    def __str__(self):
+        return self.user.email
+    

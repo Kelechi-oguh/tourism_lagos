@@ -2,7 +2,7 @@
 
 <h4>Visited an exciting location recently?</h4> 
     {% if request.user.is_authenticated %}
-    <p style="margin-top: 10px; font-size: larger;">Add it <a style="font-family: cursive; color: rgb(19, 125, 231); text-decoration: none; " href="{% url 'new_place' %}">here</a> to share with others</p>
+    <p style="margin-top: 10px; font-size: larger;">Add it <a style="font-family: cursive; color: #0077EA; text-decoration: none; " href="{% url 'new_place' %}">here</a> to share with others</p>
     {% else %}
-    <p style="margin-top: 10px; font-size: larger;"><a style="font-family: cursive; color: rgb(19, 125, 231); text-decoration: none; " href="{% url 'login' %}">Login</a> to share with others</p>
+    <p style="margin-top: 10px; font-size: larger;"><a style="font-family: cursive; color: #0077EA; text-decoration: none; " href="{% url 'login' %}">Login</a> to share with others</p>
     {% endif %}

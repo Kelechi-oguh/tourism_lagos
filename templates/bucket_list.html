@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="bucket-list" style="margin-top: 30px;">
+    {% if request.user.is_authenticated %}
+    {% if object_list %}
+        {% for object in object_list %}
+        <ul>
+            <li style="list-style: none;">
+                <h3>
+                    <i style="margin-right:20px;" class="fa-sharp fa-solid fa-location-dot"></i>
+                    <a style="text-decoration:none; color:#1e90ff;" href="{{ object.get_absolute_url }}">{{ object.name }}</a>
+                    <!-- <input type="checkbox" name="{{ object. }}" id="check" style="margin-left:35px; height: 25px; width: 25px;"> -->
+                </h3>
+            </li>
+        </ul>
+        {% endfor %}
+
+    {% else %}
+    <p>No entry yet</p>
+    {% endif %}
+
+{% else %}
+<h3 style="margin-top:20px;">Please <a href="{% url 'login' %}">Login</a> to create a bucket list</h3>
+{% endif %}
+</div>
+
+
+{% endblock %}
