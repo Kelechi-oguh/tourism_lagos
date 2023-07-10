@@ -14,12 +14,14 @@
                 <a href="{{ object.get_absolute_url }}">{{ object.name }}</a>
             </h3>
             
+            {% if request.user.is_authenticated %}
             <div class="add-to-bucket-list">
                 <form action="/bucket-list/{{ object.slug }}/" method="post">
                     {% csrf_token %}
                     <button type="submit" title="Add to Bucket List">+</button>
                 </form>
-            </div>  
+            </div> 
+            {% endif %}
         </li>
     </ul>
     {% endfor %}
