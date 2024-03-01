@@ -1,2 +1,2 @@
 # tourism_lagos
-### a Django app to create and view tourism locations in Lagos, Nigeria.
+### A Full-Stack Django web application for users to create, view, and get directions to exciting Tourism Locations in Lagos, Nigeria.
